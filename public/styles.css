@@ -1,0 +1,10 @@
+#preloader{
+    /*background:rgb(300, 300, 300) url("https://cdn.dribbble.com/users/1787505/screenshots/7300251/media/a351d9e0236c03a539181b95faced9e0.gif") no-repeat center center;*/
+    background:rgb(300, 300, 300) url("https://th.bing.com/th/id/R.fa8b3f625129eb35de0f2da1b783ddf0?rik=MQgrLE6xo5yiMQ&riu=http%3a%2f%2fimg1.liveinternet.ru%2fimages%2fattach%2fc%2f3%2f122%2f220%2f122220175_3509984_MoneyMachine.gif&ehk=pkwk28MrGHZjH9I4rW15yz91jlBWr0n%2fsGjHpTYcyn0%3d&risl=&pid=ImgRaw&r=0")no-repeat center center; 
+    height:100vh;
+    width:208vh;
+    position: fixed;
+    z-index:100;
+    background-size: 15%;
+    margin-left: -0.81rem;
+  }

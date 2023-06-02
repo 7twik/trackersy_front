@@ -1,0 +1,30 @@
+.table{
+    padding: 5px;
+    width:100%;
+}
+.head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:32px;
+    font-family: "Montserrat";
+    color:mediumspringgreen;
+}
+.gap
+{
+    min-height: 3vh;
+}
+.in{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:22px;
+    color:teal;
+}
+.topic{
+    font-family: "Dancing Script";
+    font-size: 42px;
+    padding-left: 30px;
+    text-shadow: 1.4px 1.4px #5ea2dd;
+    color:darkgreen;
+}

@@ -1,0 +1,202 @@
+
+.heading {
+    font-size: 40px;
+    font-weight: 600;
+    color: #050e12;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bgm{
+    width:150%;
+    height:100%;
+    /* height:1000px; */
+    background-image: url("https://source.unsplash.com/1600x900/?money");
+    background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  overflow:hidden;
+}
+.container{
+    overflow-x: hidden;
+    height:100%;
+    display:flex;
+    align-items: center;
+}
+.heading::after {
+    content: "";
+    width: 450px;
+    height: 4px;
+    border-radius: 1px;
+    bottom: -20px;
+    background-color: #0e1b20;
+    position: absolute;
+}
+
+.form_container {
+    display: flex;
+    flex-wrap:wrap;
+    margin:auto;
+    width: 800px;
+    min-height: 450px;
+    overflow-wrap:inherit;
+    /* background-color: white; */
+    background-color: rgba(255, 255, 255, .15);  
+ backdrop-filter: blur(10px);
+    /* opacity:0.5; */
+    box-shadow: 3px 4px 36px -6px rgba(0,0,0,0.8);
+    border-radius: 50px;
+}
+
+.left {
+    display:flex;
+    min-width:200px;
+    /* overflow: hidden; */
+    /* position: relative; */
+    /* border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px; */
+}
+
+.img {
+    min-width:200px;
+    padding:2em;
+    width: 30em;
+    height:auto;
+    /* position: absolute;
+    right:-92px;
+    top: 128px; */
+}
+
+.right {
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.from_heading {
+    font-size: 25px;
+    font-weight: 4000;
+    color: #010609;
+    margin-bottom: 30px;
+}
+
+.input {
+    width: 320px;
+    height: 35px;
+    padding: 5px;
+    margin: 5px 0;
+    outline: none;
+    border: 1px solid #050b0e;
+    border-radius: 2px;
+    font-size: 13px;
+}
+
+.btn {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 12px 25px;
+    color: white;
+    background-color: #ffc801;
+    border-radius: 12px;
+    margin: 10px 0 0 0;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.text {
+    font-size: 14px;
+    color: #091318;
+    margin: 5px 0;
+    padding: 0;
+}
+
+.text > a{
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffc801;
+}
+
+.google_btn {
+    width: 230px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 20px 0;
+    color: #2c444e;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.google_btn > img{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+
+.google_btn > span{
+    margin-left: 10px;
+}
+
+
+
+.google_btn:hover
+{
+color:#eaf4fc;
+background:#01080e;
+box-shadow:0 0 10px #073256, 0 0 40px #073256, 0 0 80px #073256;
+/* transition-delay: 1s; */
+}
+@media(max-width:470px)
+{
+    .form_container{
+        width:100%;
+    }
+    .bgm{
+        height:160%;
+    }
+}
+@media(max-width:872px)
+{
+    .bgm{
+        height:160%;
+        background-color: #2e0091;
+background-image: url("https://www.transparenttextures.com/patterns/bright-squares.png");
+        background-size: 100%;
+        background-repeat: repeat;
+    }
+}
+@media(max-width:750px)
+{
+    .form_container{
+        flex-direction: column;
+        justify-content: space-around;
+        width:max-content;
+        
+    }
+    .left{
+        display:flex;
+        justify-content: center;
+    }
+}
+
+/* .container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #f0f8ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */

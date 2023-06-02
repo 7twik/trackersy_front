@@ -1,0 +1,58 @@
+.out{
+    background-color: #242422;
+background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+    height:80px;
+    width:100%;
+    display:flex;
+    margin:auto;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    //background-color:rgb(36, 32, 32);
+    border-radius: 0 0 5% 5%;
+    padding-left:10px;
+    padding-right: 10px;
+}
+.btn {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 12px 25px;
+    color: white;
+    background-color: #ffc801;
+    border-radius: 12px;
+    margin: 10px 0 0 0;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.profile_img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* margin-bottom: 10px; */
+    margin:auto;
+    margin-left: 10px;
+}
+.top{
+    font-family: 'Poor Story',Georgia, 'Times New Roman', Times, serif;
+    font-size:32px;
+    text-shadow: 0.2px 0.2px #470998;
+    color:teal;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+.f3{
+    display: flex;
+    align-items: center;
+}
+.f2{
+    display: flex;
+    padding-left:5em;
+}
+@media(max-width:750px)
+{
+    .top{
+        font-size: 15px;
+    }
+}

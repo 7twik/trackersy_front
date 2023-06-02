@@ -1,0 +1,11 @@
+
+.headingt{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+  }
+  .Appt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:"red";
+  }
