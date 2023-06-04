@@ -31,3 +31,15 @@
 .search{
     margin-left:80px;
 }
+/* new */
+.searcc{
+    display: flex;
+    justify-content: center;
+    width:60vw;
+    padding-right:10vw;
+}
+.topinc{
+    display: flex;
+    justify-content: space-between;
+    width:100vw;    
+}
