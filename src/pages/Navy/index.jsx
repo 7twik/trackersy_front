@@ -94,17 +94,17 @@ function Navy(userDetails) {
               </a>
             </li>
             <li className="navItem">
-              <a href="/" className="navLink">
+              <a href="/Inc" className="navLink">
                 Income List
               </a>
             </li>
             <li className="navItem">
-              <a href="/" className="navLink">
+              <a href="/Exp" className="navLink">
                 Expense List
               </a>
             </li>
             <li className="navItem">
-              <a href="/" className="navLink">
+              <a href="/Inv" className="navLink">
                 Investment List
               </a>
             </li>

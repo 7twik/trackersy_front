@@ -473,7 +473,7 @@ React.useEffect(()=>{
                   <Input
                     className={styles.fie}
                     placeholder="Enter income type"
-                    size="md"
+                    size="sm"
                     name="Type"
                     value={noteInc.Type}
                     onChange={handleChangeInc}
@@ -518,7 +518,7 @@ React.useEffect(()=>{
                     className={styles.fie}
                     name="Type"
                     placeholder="Enter expense type"
-                    size="md"
+                    size="sm"
                     value={noteExp.Type}
                     onChange={handleChangeExp}
                     required
