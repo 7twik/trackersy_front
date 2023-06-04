@@ -44,340 +44,413 @@ import {
 
 function Home(userDetails) {
   const user = userDetails;
-
-  function submitRed(event) {
-    const set = event.target.innerHTML;
-    console.log(event.target.innerHTML);
-    window.location.href = "https://www.google.com/search?q=" + set + "+stocks";
-  }
-  //expense code         /////////////////////////////////////////////////////////
-  const [noteExp, setNoteExp] = React.useState({
-    Type: "",
-    Desc: "",
-    Amt: 0,
-    User: "",
-  });
-  function handleChangeExp(event) {
-    const { name, value } = event.target;
-
-    setNoteExp((prevNote) => {
-      return {
-        ...prevNote,
-        User: userDetails.user.email,
-        [name]: value,
-      };
-    });
-  }
-  const submitNoteExp = async (event) => {
-    console.log(noteExp);
-    axios.post("http://localhost:8080/expense", noteExp);
-    window.location.reload();
-  };
-  ////////////////////////////////////////////////////////////////////////////////
-
-  //income code         /////////////////////////////////////////////////////////
-  const [noteInc, setNoteInc] = React.useState({
-    Type: "",
-    Desc: "",
-    Amt: 0,
-    User: "",
-  });
-  function handleChangeInc(event) {
-    const { name, value } = event.target;
-
-    setNoteInc((prevNote) => {
-      return {
-        ...prevNote,
-        User: userDetails.user.email,
-        [name]: value,
-      };
-    });
-  }
-  const submitNoteInc = async (event) => {
-    // setNoteInc((prevNote)=>{
-    // 	return{
-    // 		...prevNote,
-    // 		User: userDetails.user.email
-    // 	}
-    // })
-    console.log(noteInc);
-    axios.post("http://localhost:8080/income", noteInc);
-    window.location.reload();
-  };
-  /////////////////////////////////////////////////////////////////////////
-
-  //investment code         /////////////////////////////////////////////////////////
-  const [noteInv, setNoteInv] = React.useState({
-    Type: "",
-    No: 0,
-    Name: "",
-    Amt: 0,
-    User: "",
-    Desc: "",
-  });
-  function handleChangeInv(event) {
-    const { name, value } = event.target;
-
-    setNoteInv((prevNote) => {
-      return {
-        ...prevNote,
-
-        User: userDetails.user.email,
-        [name]: value,
-      };
-    });
-  }
-  const submitNoteInv = async (event) => {
-    axios.post("http://localhost:8080/invest", noteInv);
-    console.log(noteInv);
-    window.location.reload();
-  };
-
-  const [check, setCheck] = React.useState(false);
-
-  const [nameNSE, setNameNSE] = React.useState([]);
-  const [noteNSE, setNoteNSE] = React.useState(0);
-
-  React.useEffect(() => {
-    axios.get("http://localhost:8080/api/stockzz").then((res) => {
-      setNameNSE(res.data);
-      console.log(res.data);
-    });
-    //getData();
-  }, []);
-  const handleChangeInvy = async (e) => {
-    const val = e.target.value;
-    console.log(val);
-    const options = {
-      method: "GET",
-      url: "http://localhost:8080/rtkQ",
-      params: { Name: val },
-    };
-
-    await axios
-      .request(options)
-      .then((response) => {
-        console.log(response);
-        setNoteNSE(response);
-        handleChangeInv(e);
-      })
-      .catch((error) => {
-        console.error("2" + error);
-        setCheck(false);
-      });
-  };
-  React.useEffect(() => {
-    if (noteNSE) {
-      if (
-        noteNSE.request.response === '{"data":[],"msg":"no data found"}' ||
-        noteNSE.request.response === '"Missing symbol."' ||
-        noteNSE.data.message ===
-          "TypeError: Cannot read property 'length' of undefined"
-      ) {
-        setCheck(false);
-        setNoteInv((prevNote) => {
-          return {
-            ...prevNote,
-            Amt: 0,
-          };
-        });
-      } else {
-        setCheck(true);
-
-        setNoteInv((prevNote) => {
-          return {
-            ...prevNote,
-            Amt: noteNSE.data.priceInfo.lastPrice,
-          };
-        });
-      }
+	 
+	function submitRed(event){
+        const set=event.target.innerHTML;
+        console.log(event.target.innerHTML);
+        window.location.href = "https://www.google.com/search?q="+set+"+stocks";
     }
-  }, [noteNSE]);
+	//expense code         /////////////////////////////////////////////////////////
+	const [noteExp, setNoteExp] = React.useState({
+		Type: "",
+		Desc: "",
+	    Amt: 0,
+		User: ""
+	  });
+	function handleChangeExp(event) {
+		const { name, value } = event.target;
+	
+		setNoteExp((prevNote) => {
+		  return {
+			...prevNote,
+			User: userDetails.user.email,
+			[name]: value
+		  };
+		});
+	  };
+	  const submitNoteExp =async (event)=> {
+	
+		console.log(noteExp);
+		axios.post("http://localhost:8080/expense", noteExp);
+		window.location.reload();
+	  };
+	  ////////////////////////////////////////////////////////////////////////////////
 
-  ////////////////////////////////////////////////////////////////////////////
 
-  /////Invest sell code ////////////////////////////////////////////////////
 
-  const [noteIns, setNoteIns] = React.useState();
-  const [noteInsx, setNoteInsx] = React.useState({
-    Name: "",
-    Amt: 0,
-    No: 0,
-    User: "",
-  });
+	  //income code         /////////////////////////////////////////////////////////
+	const [noteInc, setNoteInc] = React.useState({
+		Type: "",
+		Desc: "",
+	    Amt: 0,
+		User: ""
+	  });
+	function handleChangeInc(event) {
+		const { name, value } = event.target;
+	
+		setNoteInc((prevNote) => {
+		  return {
+			...prevNote,
+			User: userDetails.user.email,
+			[name]: value
+		  };
+		});
+	  };
+	  const submitNoteInc =async (event)=> {
 
-  React.useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "http://localhost:8080/investtable",
-      params: { Username: user.user.email },
-    };
+		// setNoteInc((prevNote)=>{
+		// 	return{
+		// 		...prevNote,
+		// 		User: userDetails.user.email
+		// 	}
+		// })
+		console.log(noteInc);
+		axios.post("http://localhost:8080/income", noteInc);
+		window.location.reload();
+	  };
+	  /////////////////////////////////////////////////////////////////////////
 
-    axios
-      .request(options)
-      .then((response) => {
-        //console.log(response.data)
-        setNoteIns(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [user.user.email]);
 
-  React.useEffect(() => {
-    console.log(noteIns);
-  }, [noteIns]);
+	  //investment code         /////////////////////////////////////////////////////////
+	  const [noteInv, setNoteInv] = React.useState({
+		Type: "",
+		No: 0,
+		Name:"",
+	    Amt: 0,
+		User: "",
+		Desc:""
+	  });
+	function handleChangeInv(event) {
+		const { name, value } = event.target;
+		
+		setNoteInv((prevNote) => {
+		  return {
+			...prevNote,
+			
+			User: userDetails.user.email,
+			[name]: value
+		  };
+		});
+	  };
+	  const submitNoteInv =async (event)=> {
+		axios.post("http://localhost:8080/invest", noteInv);
+		console.log(noteInv);
+		window.location.reload();
+	  };
 
-  const [lim, setL] = React.useState(0);
-  //const [nsesell,setNSE]=React.useState(0);
 
-  function handleChangeIns(event) {
-    const { name, value } = event.target;
-    const namzz = event.target.name;
-    const valzz = event.target.value;
-    console.log("namzz= " + namzz + ",," + valzz);
-    if (namzz === "Name") {
-      const pos3 = valzz.indexOf("{");
-      const no = valzz.slice(pos3 + 1);
-      console.log(no);
-      setL(parseInt(no, 10));
-      console.log("checkkk=" + lim);
-    }
-    setNoteInsx((prevNote) => {
-      return {
-        ...prevNote,
-        User: user.user.email,
-        [name]: value,
-      };
-    });
-  }
 
-  React.useEffect(() => {
-    if (noteInv.Name === "") setL(0);
-  }, [noteInv.Name]);
+	  const[check,setCheck]=React.useState(false);
 
-  const submitNoteIns = async (event) => {
-    axios.post("http://localhost:8080/investSell", noteInsx);
-    console.log(noteInsx);
-    window.location.reload();
-  };
-  ///////////////////////////////////////////////////////
+	  const [nameNSE,setNameNSE]=React.useState([]);
+	  const [noteNSE,setNoteNSE]=React.useState(0);
+		  
+	  React.useEffect(()=>{
+		  axios.get("http://localhost:8080/api/stockzz").then(res =>{
+			   setNameNSE(res.data);
+			   console.log(res.data);
+		  });
+		  //getData();
+	  },[]);
+	  const handleChangeInvy = async (e)=> {
+		  const val=e.target.value;
+		  console.log(val);
+		  const options = {
+			  method: 'GET',
+			  url: 'http://localhost:8080/rtkQ',
+			  params: {Name: val},
+		  };
+  
+		  await axios.request(options).then((response) => {
+			  console.log(response);
+			 setNoteNSE(response);
+			 handleChangeInv(e);
+		  }).catch((error) => {
+			  console.error("2"+error)
+			  setCheck(false);
+		  });
+		  
+	  }
+	  React.useEffect(()=>{
+		if(noteNSE)
+		{
+		if ((noteNSE.request.response==="{\"data\":[],\"msg\":\"no data found\"}")||(noteNSE.request.response==="\"Missing symbol.\"")||(noteNSE.data.message==="TypeError: Cannot read property 'length' of undefined"))
+		{
+			setCheck(false);
+			setNoteInv((prevNote) => {
+				return {
+				  ...prevNote,
+				  Amt: 0
+				};
+			  });
+		}
+		else
+		{
+			setCheck(true);
+			
+			setNoteInv((prevNote) => {
+				return {
+				  ...prevNote,
+				  Amt: noteNSE.data.priceInfo.lastPrice
+				};
+			  });
+		}
+	}
+	  },[noteNSE]);
 
-  /////////////////Side value////////////////////////////////////
+	  ////////////////////////////////////////////////////////////////////////////
 
-  //const [amt,setAmt]=React.useState(null);
-  // 	 React.useEffect(()=>{
-  //     	const options = {
-  //         method: 'GET',
-  //         url: 'http://localhost:8080/proftable',
-  //         params: {Username: user.user.email},
-  //     };
 
-  //     axios.request(options).then((response) => {
-  //         //console.log(response.data[0]);
-  //        setAmt(response.data[0]);
 
-  //     }).catch((error) => {
-  //         console.error(error)
-  //     });
-  // },[user.user.email]);
+	  /////Invest sell code ////////////////////////////////////////////////////
 
-  ////////////////////////////////////////////////////////  side alter
-  const [amt1, set1] = React.useState(null);
-  React.useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "http://localhost:8080/api/income",
-      params: { Username: user.user.email },
-    };
+	  const [noteIns, setNoteIns] = React.useState();
+	  const [noteInsx, setNoteInsx] = React.useState({
+		  Name: "",
+		  Amt:0,
+		  No:0,
+		  User:""
+	  });
 
-    axios
-      .request(options)
-      .then((response) => {
-        console.log(response.data.orders[0].totalAmount.$numberDecimal);
-        set1(response.data.orders[0].totalAmount.$numberDecimal);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [user.user.email]);
+	  React.useEffect(()=>{
+				const options = {
+					method: 'GET',
+					url: 'http://localhost:8080/investtable',
+					params: {Username: user.user.email},
+				}
 
-  const [amt2, set2] = React.useState(null);
-  React.useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "http://localhost:8080/api/expense",
-      params: { Username: user.user.email },
-    };
+				axios.request(options).then((response) => {
+					//console.log(response.data)
+				setNoteIns(response.data)
 
-    axios
-      .request(options)
-      .then((response) => {
-        console.log(response.data.orders[0].totalAmount.$numberDecimal);
-        set2(response.data.orders[0].totalAmount.$numberDecimal);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [user.user.email]);
+				}).catch((error) => {
+					console.error(error)
+				})
+		},[user.user.email]);
 
-  const [amt3, set3] = React.useState(null);
-  React.useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "http://localhost:8080/investOri",
-      params: { Username: user.user.email },
-    };
 
-    axios
-      .request(options)
-      .then((response) => {
-        console.log(response.data.orders[0].totalAmount.$numberDecimal);
-        set3(response.data.orders[0].totalAmount.$numberDecimal);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [user.user.email]);
+		React.useEffect(()=>{
+			console.log(noteIns);
+		  },[noteIns]);
+	  
+		  const [lim,setL]=React.useState(0);
+		  //const [nsesell,setNSE]=React.useState(0);
 
-  const [amt4, set4] = React.useState(null);
-  React.useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "http://localhost:8080/investCha",
-      params: { Username: user.user.email },
-    };
+	function handleChangeIns(event) {
+			  const { name, value } = event.target;
+				const namzz=event.target.name;
+				const valzz=event.target.value;
+				console.log("namzz= "+namzz+",,"+valzz);
+		if (namzz==="Name")
+			{
+				const pos3=valzz.indexOf("{");
+				const no=valzz.slice(pos3+1);
+				console.log(no);
+				setL(parseInt(no, 10));
+				console.log("checkkk="+lim);
+			}
+			  setNoteInsx((prevNote) => {
+				return {
+				  ...prevNote,
+				  User:user.user.email,
+				  [name]: value,
+				};
+				
+			  });
+			};
+			
+			React.useEffect(()=>{
+				if (noteInv.Name==="")
+					setL(0);
+			  },[noteInv.Name])
 
-    axios
-      .request(options)
-      .then((response) => {
-        console.log(response.data.orders[0].totalAmount.$numberDecimal);
-        set4(response.data.orders[0].totalAmount.$numberDecimal);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [user.user.email]);
 
-  const [amt5, set5] = React.useState(null);
-  React.useEffect(() => {
-    set5(((amt4 - amt3) / amt3) * 100);
-  }, [amt3, amt4]);
 
-  React.useEffect(() => {
-    axios.post("http://localhost:8080/api/upload", "hello");
-  }, [user.user.email]);
-  ///////////////////////////////////////////////////////////////////////
-  const [data01, setData] = React.useState();
-  React.useEffect(() => {
-    setData([
-      { name: "Income", value: amt1 },
-      { name: "Expense", value: amt2 },
-      { name: "Investment valuation", value: amt4 },
-    ]);
-    console.log(data01);
-  }, [amt1, amt2, amt3, amt4, data01]);
 
+			const submitNoteIns =async (event)=> {
+	
+				  axios.post("http://localhost:8080/investSell", noteInsx);
+				  console.log(noteInsx);
+				window.location.reload();
+			};
+	
+		
+		////////////////////////////////////////////////////////  side alter
+		const [amt1,set1]=React.useState(null);
+		 React.useEffect(()=>{
+        	const options = {
+            method: 'GET',
+            url: 'http://localhost:8080/api/income',
+            params: {Username: user.user.email},
+        };
+
+        axios.request(options).then((response) => {
+            //console.log(response.data.orders[0].totalAmount.$numberDecimal);
+           set1(response.data.orders[0].totalAmount.$numberDecimal);
+
+        }).catch((error) => {
+            console.error(error)
+        });
+    },[user.user.email]);
+
+
+	const [amt2,set2]=React.useState(null);
+	React.useEffect(()=>{
+	   const options = {
+	   method: 'GET',
+	   url: 'http://localhost:8080/api/expense',
+	   params: {Username: user.user.email},
+   };
+
+   axios.request(options).then((response) => {
+	   //console.log(response.data.orders[0].totalAmount.$numberDecimal);
+	  set2(response.data.orders[0].totalAmount.$numberDecimal);
+
+   }).catch((error) => {
+	   console.error(error)
+   });
+},[user.user.email]);
+
+
+const [amt3,set3]=React.useState(null);
+React.useEffect(()=>{
+   const options = {
+   method: 'GET',
+   url: 'http://localhost:8080/investOri',
+   params: {Username: user.user.email},
+};
+
+
+axios.request(options).then((response) => {
+   //console.log(response.data.orders[0].totalAmount.$numberDecimal);
+  set3(response.data.orders[0].totalAmount.$numberDecimal);
+
+}).catch((error) => {
+   console.error(error)
+});
+},[user.user.email]);
+
+
+const [amt4,set4]=React.useState(null);
+React.useEffect(()=>{
+   const options = {
+   method: 'GET',
+   url: 'http://localhost:8080/investCha',
+   params: {Username: user.user.email},
+};
+
+axios.request(options).then((response) => {
+  // console.log(response.data.orders[0].totalAmount.$numberDecimal);
+  set4(response.data.orders[0].totalAmount.$numberDecimal);
+
+}).catch((error) => {
+   console.error(error)
+});
+},[user.user.email]);
+
+
+const [amt5,set5]=React.useState(null);
+React.useEffect(()=>{
+	set5(((amt4-amt3)/amt3)*100);
+},[amt3,amt4]);
+
+
+
+		///////////////////////////////////////////////////////////////////////
+		const [data01,setData]=React.useState();
+React.useEffect(()=>{
+	setData([{ name:"Income", value:amt1},{name:"Expense",value:amt2},{name:"Investment valuation",value:amt4}]);
+	//console.log(data01);
+	console.log(inc1);
+},[amt1,amt2,amt3,amt4,data01])
+
+
+///////////////Graph code///////////////////////////////////////////////
+const [inc1,setinc1]=React.useState([]);
+const [exp1,setexp1]=React.useState([]);
+const [inv1,setinv1]=React.useState([]);
+const [inv2,setinv2]=React.useState([]);
+
+React.useEffect(()=>{
+	for (let i=5;i>0;i--)
+	{
+		const ds=new Date();
+		const dd=new Date(ds.setDate(ds.getDate() - i));
+			const options = {
+			method: 'GET',
+			url: 'http://localhost:8080/api/income3',
+			params: {Username: user.user.email,Date: dd},
+		};
+
+		axios.request(options).then((response) => {
+			console.log("RESP"+response.data.orders[0].totalAmount.$numberDecimal);
+			
+			setinc1((previousData) => [...previousData, response.data.orders[0].totalAmount.$numberDecimal]);
+		}).catch((error) => {
+			console.error(error)
+		});
+	}
+},[user.user.email]);
+React.useEffect(()=>{
+	for (let i=5;i>0;i--)
+	{
+			const ds=new Date();
+			const dd=new Date(ds.setDate(ds.getDate() - i));
+			const options = {
+			method: 'GET',
+			url: 'http://localhost:8080/api/expense3',
+			params: {Username: user.user.email,Date: dd},
+		};
+
+		axios.request(options).then((response) => {
+			console.log("RESP"+response.data.orders[0].totalAmount.$numberDecimal);
+			
+			setexp1((previousData) => [...previousData, response.data.orders[0].totalAmount.$numberDecimal]);
+		}).catch((error) => {
+			console.error(error)
+		});
+	}
+},[user.user.email]);
+React.useEffect(()=>{
+	for (let i=5;i>0;i--)
+	{
+		const ds=new Date();
+		const dd=new Date(ds.setDate(ds.getDate() - i));
+			const options = {
+			method: 'GET',
+			url: 'http://localhost:8080/investCha3',
+			params: {Username: user.user.email,Date: dd},
+		};
+
+		axios.request(options).then((response) => {
+			console.log("RESP"+response.data.orders[0].totalAmount.$numberDecimal);
+			
+			setinv1((previousData) => [...previousData, response.data.orders[0].totalAmount.$numberDecimal]);
+		}).catch((error) => {
+			console.error(error)
+		});
+	}
+},[user.user.email]);
+React.useEffect(()=>{
+	for (let i=5;i>0;i--)
+	{
+		const ds=new Date();
+		const dd=new Date(ds.setDate(ds.getDate() - i));
+			const options = {
+			method: 'GET',
+			url: 'http://localhost:8080/investOri3',
+			params: {Username: user.user.email,Date: dd},
+		};
+
+		axios.request(options).then((response) => {
+			console.log("RESP"+response.data.orders[0].totalAmount.$numberDecimal);
+			
+			setinv2((previousData) => [...previousData, response.data.orders[0].totalAmount.$numberDecimal]);
+		}).catch((error) => {
+			console.error(error)
+		});
+	}
+},[user.user.email]);
   return (
     <div className={styles.home}>
       <div className={styles.navy}>

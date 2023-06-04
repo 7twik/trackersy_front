@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import axios from 'axios';
 //import { useNavigate } from 'react-router-dom';
 import Navy from '../Navy/index';
-import { SimpleGrid, Box, Stack} from '@chakra-ui/react';
+import { SimpleGrid, Box, Stack, Button, Input} from '@chakra-ui/react';
 
 function Inv(userDetails){
     const user = userDetails;
@@ -86,10 +86,77 @@ function Inv(userDetails){
     }
 
 
+    
+   ///Search//////////////////////////////////////////////////
+   const [search1,setSearch1]=React.useState(null);
+   function handleSearch(event){
+       setSearch1(event.target.value);
+   }
+   function search(){
+       if(search1===""){
+           window.location.reload();
+       }
+       else{
+       const options = {
+           method: 'GET',
+           url: 'http://localhost:8080/investtable2',
+           params: {Username: user.user.email,
+                   Type: search1,
+           },
+       };
+
+       axios.request(options).then((response) => {
+           //console.log(response.data)
+           response.data.reverse();
+          setNoteIns(response.data)
+
+       }).catch((error) => {
+           console.error(error)
+       });
+
+       const options2 = {
+        method: 'GET',
+        url: 'http://localhost:8080/investOri2',
+        params: {Username: user.user.email,Type: search1,},
+     };
+     
+     axios.request(options2).then((response) => {
+        console.log(response.data.orders[0].totalAmount.$numberDecimal);
+       set3(response.data.orders[0].totalAmount.$numberDecimal);
+     
+     }).catch((error) => {
+        console.error(error)
+     });
+
+        const options3 = {
+            method: 'GET',
+            url: 'http://localhost:8080/investCha2',
+            params: {Username: user.user.email,Type: search1,},
+        };
+     
+        axios.request(options3).then((response) => {
+            console.log(response.data.orders[0].totalAmount.$numberDecimal);
+        set4(response.data.orders[0].totalAmount.$numberDecimal);
+        
+        }).catch((error) => {
+            console.error(error)
+        });
+   }}
+
+
     return(<div>
         <Navy user={user} />
         <div className={styles.gap}></div>
-            <h1 className={styles.topic}>Invest Table</h1>
+        <div className={styles.topinc}>
+        <h1 className={styles.topic}>Invest Table</h1>
+
+        <div className={styles.searcc}><Input
+              placeholder="Search"
+              _placeholder={{ opacity: 1, color: "gray.600" }}
+              name="Type"
+              onChange={handleSearch}
+            /><Button colorScheme="teal" onClick={search}>Search</Button> </div></div>
+
             
         <div className={styles.gap}></div>
         <div className={styles.table}>
