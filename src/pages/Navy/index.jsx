@@ -1,5 +1,3 @@
-// import { Link } from "react-router-dom";
-// import styles from "./styles.module.css";
 import "./Navbar.scss";
 import React, { useState } from "react";
 import { MdOutlineTravelExplore } from "react-icons/md";
@@ -21,69 +19,18 @@ function Navy(userDetails) {
     setActive("navBar");
   };
   return (
-    // <nav className={styles.out}>
-    //   <div className={styles.f3}>
-    //     <div className={styles.top}>
-    //       {" "}
-    //       <h1> Welcome {userDetails.user.user.name}! </h1>
-    //       <img
-    //         className={styles.profile_img}
-    //         src={userDetails.user.user.picture}
-    //         alt="alt"
-    //       />
-    //     </div>
-    //     <div className={styles.f2}>
-    //       <div className={styles.f2}>
-    //       <a href="/">
-    //         <Button w="120px" colorScheme="teal" variant="outline">
-    //           Home
-    //         </Button>
-    //         </a>
-    //       </div>
-    //       <div className={styles.f2}>
-    //       <a href="/Inc">
-    //         <Button w="120px" colorScheme="teal" variant="outline">
-    //           Income List
-    //         </Button>
-    //         </a>
-    //       </div>
-    //       <div className={styles.f2}>
-    //       <a href="/Exp">
-    //         <Button w="120px" colorScheme="teal" variant="outline">
-    //          Expense List
-    //         </Button>
-    //         </a>
-    //       </div>
-    //       <div className={styles.f2}>
-    //       <a href="/Inv">
-    //         <Button w="120px" colorScheme="teal" variant="outline">
-    //           Investment List
-    //         </Button>
-    //         </a>
-    //       </div>{" "}
-    //     </div>
-    //   </div>
-    //   <Button colorScheme="teal" onClick={logout}>
-    //     Logout
-    //   </Button>
-    //</nav>
     <section className="navBar section">
       <header className="header flex">
         <div className="logoDiv">
           <a href="/" className="logo flex">
-          {/* <img
-                className="icon"
-                src={userDetails.user.user.picture}
-                alt="alt"
-              /> */}
             <h1>
               {/* <MdOutlineTravelExplore className="icon" /> */}
               Welcome {userDetails.user.user.name}!
             </h1>
-            <img style={{width:"1.5rem",height:"1.5rem",borderRadius:"50%"}}
+             <img style={{width:"1.5rem",height:"1.5rem",borderRadius:"50%"}}
              src={userDetails.user.user.picture}
              alt="alt"
-           />
+           />  
           </a>
         </div>
         <div className={active}>
@@ -109,7 +56,7 @@ function Navy(userDetails) {
               </a>
             </li>
             
-            <button className="btn" onClick={logout} style={{color:"white"}}>
+            <button className="btn lgot" onClick={logout} style={{color:"var(--whiteColor)",background:"var(--chakra-colors-teal-600)"}}>
               Logout
             </button>
           </ul>

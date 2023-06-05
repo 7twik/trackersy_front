@@ -23,7 +23,9 @@
 }
 .topic{
     font-family: "Dancing Script";
-    font-size: 42px;
+    display: block;
+    margin-top: 12vh;
+    font-size: 10vh;
     padding-left: 30px;
     text-shadow: 1.4px 1.4px #5ea2dd;
     color:darkgreen;
@@ -39,4 +41,18 @@
     display: flex;
     justify-content: space-between;
     width:100vw;    
+}
+
+@media (max-width:750px){
+    .head{
+        font-size: 1.8vh;
+    }
+    .in{
+        font-size: 1.5vh;
+    }
+    .topic{
+        margin-top: 10vh;
+        font-size: 8vh;
+    }
+
 }

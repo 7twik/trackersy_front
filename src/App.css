@@ -46,7 +46,7 @@ html{
     font-weight: 500;
 }
 .btn:hover{
-    background: var(--SecondaryColor);
+    background: var(--chakra-colors-teal-600);
 }
 img,video{
     width: 100%;

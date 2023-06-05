@@ -155,6 +155,7 @@ background-image: url("https://www.transparenttextures.com/patterns/dark-mosaic.
     height:100vh;
     width:100vw;
     max-width: 100vw;
+    overflow-x: hidden;
     flex-wrap: wrap;
 }
 .che{

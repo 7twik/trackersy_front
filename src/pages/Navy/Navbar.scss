@@ -23,8 +23,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: rgb(218, 214, 214);
     // background-color: var(--whiteColor);
     background-color: rgb(173, 172, 172);
+    background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
     width: 100%;
     padding: 1rem;
     z-index: 1000;
@@ -32,7 +34,7 @@
     transition: .3s ease-in-out;
 
     .logo{
-        color: var(--blackColor);
+        color: var(--whiteColor);
         font-weight: 650;
         cursor: pointer;
         align-items: center;
@@ -95,11 +97,10 @@
                         color: var(--textColor);
                         font-size: .9rem;
                         font-weight: 650;
-
-                        &:hover{
-                            color: var(--PrimaryColor);
-                        }
                     }
+                        .navLink:hover{
+                            color: var(--chakra-colors-teal-600);
+                        }
                 }
                 .btn{
                     margin-top: 1rem;
@@ -115,7 +116,7 @@
                 display: block;
                 top: 1rem;
                 right: 1.5rem;
-                color: var(--PrimaryColor);
+                color: var(--chakra-colors-teal-600);
                 &:hover{
                     color: var(--SecondaryColor);
                 }
@@ -129,10 +130,13 @@
         padding-right:5vw;
         .icon{
             font-size: 25px;
-            color: var(--PrimaryColor);
+            color: var(--chakra-colors-teal-600);
         }
         &:hover.icon{
-            color: var(--SecondaryColor);
+            color:var(--chakra-colors-teal-600);
         }
     }
+}
+.lgot{
+    background: var(--chakra-colors-teal-600);
 }

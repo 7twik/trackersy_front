@@ -1,11 +1,18 @@
 import styles from "./styles.module.css";
-import ReactCardFlip from "react-card-flip";
-import Linechart from "../LineGraph/LineGraph";
-import React, { useEffect } from "react";
+// import Container from 'react-bootstrap/Container';
+// import Nav from 'react-bootstrap/Nav';
+// import Navbar from 'react-bootstrap/Navbar';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
+//import BarChart from "../Pie2/index";
+import React from "react";
+//import Pi from "../Pi/index";
+//import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from 'recharts';
 import axios from "axios";
 //import NavBar from "../NavBar";
 import Navy from "../Navy/index";
 //import InvSell from "../InvSell";
+import ReactCardFlip from "react-card-flip";
+import Linechart from "../LineGraph/LineGraph";
 import {
   Tabs,
   TabList,
@@ -28,13 +35,18 @@ import {
   Td,
   TableContainer,
 } from "@chakra-ui/react";
-import { NumberInput, NumberInputField } from "@chakra-ui/react";
-
+import {
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+} from "@chakra-ui/react";
 //import "bootstrap/dist/css/bootstrap.min.css";
 
 function Home(userDetails) {
   const user = userDetails;
-  const [flip, setFlip] = React.useState(false);
+
   function submitRed(event) {
     const set = event.target.innerHTML;
     console.log(event.target.innerHTML);
@@ -351,9 +363,11 @@ function Home(userDetails) {
   const [exp1, setexp1] = React.useState([]);
   const [inv1, setinv1] = React.useState([]);
   const [inv2, setinv2] = React.useState([]);
-  const asyncInc = async () => {
+
+  React.useEffect(() => {
     for (let i = 0; i <= 5; i++) {
       const ds = new Date();
+      console.log("TODAY's DATE="+ds);
       const dd = new Date(ds.setDate(ds.getDate() - i));
       const options = {
         method: "GET",
@@ -361,7 +375,7 @@ function Home(userDetails) {
         params: { Username: user.user.email, Date: dd },
       };
 
-      await axios
+      axios
         .request(options)
         .then((response) => {
           console.log(
@@ -377,20 +391,9 @@ function Home(userDetails) {
           console.error(error);
         });
     }
-    for (let i = 0; i <= 5; i++) {
-      if (inc1[i] === undefined || inc1[i] === null) {
-        setinc1((previousData) => [...previousData, 0]);
-      }
-    }
-  };
+  }, [user.user.email,data01]);
   React.useEffect(() => {
-    asyncInc();
-  }, []);
-  //write me a async function skeleton code
-  const asyncExp = async () => {
-    var a = 0;
     for (let i = 0; i <= 5; i++) {
-      a++;
       const ds = new Date();
       const dd = new Date(ds.setDate(ds.getDate() - i));
       const options = {
@@ -399,7 +402,7 @@ function Home(userDetails) {
         params: { Username: user.user.email, Date: dd },
       };
 
-      await axios
+      axios
         .request(options)
         .then((response) => {
           console.log(
@@ -415,22 +418,9 @@ function Home(userDetails) {
           console.error(error);
         });
     }
-    if (a >= 6) {
-      for (let i = 0; i <= 5; i++) {
-        if (exp1[i] === undefined || exp1[i] === null) {
-          setexp1((previousData) => [...previousData, 0]);
-        }
-      }
-    }
-  };
-
+  }, [user.user.email]);
   React.useEffect(() => {
-    asyncExp();
-  }, []);
-  const asyncInv1 = async () => {
-    var a = 0;
     for (let i = 0; i <= 5; i++) {
-      a++;
       const ds = new Date();
       const dd = new Date(ds.setDate(ds.getDate() - i));
       const options = {
@@ -439,7 +429,7 @@ function Home(userDetails) {
         params: { Username: user.user.email, Date: dd },
       };
 
-      await axios
+      axios
         .request(options)
         .then((response) => {
           console.log(
@@ -455,22 +445,9 @@ function Home(userDetails) {
           console.error(error);
         });
     }
-    if (a >= 6) {
-      for (let i = 0; i <= 5; i++) {
-        if (inv1[i] === undefined || inv1[i] === null) {
-          setinv1((previousData) => [...previousData, 0]);
-        }
-      }
-    }
-  };
+  }, [user.user.email]);
   React.useEffect(() => {
-    asyncInv1();
-    console.log("i fire once");
-  }, []);
-  const asyncInv2 = async () => {
-    var a = 0;
     for (let i = 0; i <= 5; i++) {
-      a++;
       const ds = new Date();
       const dd = new Date(ds.setDate(ds.getDate() - i));
       const options = {
@@ -479,7 +456,7 @@ function Home(userDetails) {
         params: { Username: user.user.email, Date: dd },
       };
 
-      await axios
+      axios
         .request(options)
         .then((response) => {
           console.log(
@@ -495,20 +472,8 @@ function Home(userDetails) {
           console.error(error);
         });
     }
-    if (a >= 6) {
-      for (let i = 0; i <= 5; i++) {
-        if (inv2[i] === undefined || inv2[i] === null) {
-          setinv2((previousData) => [...previousData, 0]);
-        }
-      }
-    }
-  };
-  React.useEffect(() => {
-    asyncInv2();
-  }, []);
-
-  //////////////////////////
-
+  }, [user.user.email]);
+  const [flip,setFlip] = React.useState(false);
   return (
     <div className={styles.home}>
       <div className={styles.navy}>
@@ -531,7 +496,7 @@ function Home(userDetails) {
                   <Input
                     className={styles.fie}
                     placeholder="Enter income type"
-                    size="md"
+                    size="sm"
                     name="Type"
                     value={noteInc.Type}
                     onChange={handleChangeInc}
@@ -555,6 +520,10 @@ function Home(userDetails) {
                     required
                   >
                     <NumberInputField name="Amt" onChange={handleChangeInc} />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
                   </NumberInput>
 
                   <Button colorScheme="teal" onClick={submitNoteInc}>
@@ -572,7 +541,7 @@ function Home(userDetails) {
                     className={styles.fie}
                     name="Type"
                     placeholder="Enter expense type"
-                    size="md"
+                    size="sm"
                     value={noteExp.Type}
                     onChange={handleChangeExp}
                     required
@@ -657,6 +626,10 @@ function Home(userDetails) {
                     required
                   >
                     <NumberInputField name="Amt" onChange={handleChangeInv} />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
                   </NumberInput>
 
                   <label>No. of shares :</label>
@@ -667,6 +640,10 @@ function Home(userDetails) {
                     required
                   >
                     <NumberInputField name="No" onChange={handleChangeInv} />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
                   </NumberInput>
                   <h2 className={styles.pri}>
                     Total Amount: INR {noteInv.No * noteInv.Amt}
@@ -721,6 +698,10 @@ function Home(userDetails) {
                     required
                   >
                     <NumberInputField name="No" onChange={handleChangeIns} />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
                   </NumberInput>
 
                   <label>Price: </label>
@@ -731,6 +712,10 @@ function Home(userDetails) {
                     required
                   >
                     <NumberInputField name="Amt" onChange={handleChangeIns} />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
                   </NumberInput>
 
                   <Button colorScheme="teal" onClick={submitNoteIns}>
@@ -741,13 +726,10 @@ function Home(userDetails) {
             </TabPanels>
           </Tabs>
         </Box>
+
         {!check ? (
           <ReactCardFlip isFlipped={flip} flipDirection="vertical">
-            <Box
-              borderWidth="1px"
-              className={styles.field}
-              onMouseEnter={() => setFlip(!flip)}
-            >
+            <Box onMouseEnter={() => setFlip(!flip)} borderWidth="1px" className={styles.field}>
               <TableContainer>
                 <Table variant="simple">
                   <Tbody>
@@ -801,6 +783,10 @@ function Home(userDetails) {
                   </Tbody>
                 </Table>
               </TableContainer>
+              {/* <div className={styles.che}>Income Amount:		Rs.{(amt1===null)?0:amt1}</div>
+			<div className={styles.che}>Expense Amount: 	Rs.{(amt2===null)?0:amt2}</div>
+			<div className={styles.che}>Current Wallet Amount: 	Rs.{(amt1===null)?((amt2===null)?0:-amt2):((amt2==null)?amt1:amt1-amt2)}</div>
+			<div className={styles.che}>Investment Amount: Rs.{Math.round(((amt4===null)?0:amt4)*100)/100} ({Math.round(((amt5===null)?0:amt5)*100)/100}%)</div> */}
             </Box>
 
             <Box
@@ -912,5 +898,5 @@ function Home(userDetails) {
     </div>
   );
 }
-export default Home;
 
+export default Home;
