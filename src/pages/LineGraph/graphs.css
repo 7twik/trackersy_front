@@ -1,0 +1,12 @@
+
+
+@media (max-width: 750px) {
+    .chartss{
+        width: 80vw;
+        height: auto;
+    }
+    #apexchartsgegm8psgl{
+        width: 80vw!important;
+        height: 80vh !important;
+    }
+}
