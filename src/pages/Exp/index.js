@@ -39,7 +39,7 @@ function Exp(userDetails) {
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "http://localhost:8080/expensetable",
+      url: "https://trackersy-back.onrender.com/expensetable",
       params: { Username: user.user.email },
     };
 
@@ -59,7 +59,7 @@ function Exp(userDetails) {
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "http://localhost:8080/api/expense",
+      url: "https://trackersy-back.onrender.com/api/expense",
       params: { Username: user.user.email },
     };
 
@@ -80,7 +80,7 @@ function Exp(userDetails) {
     const d = {
       _id: event.target.id,
     };
-    axios.post("http://localhost:8080/api/expdel", d);
+    axios.post("https://trackersy-back.onrender.com/api/expdel", d);
   }
 
   function handleChangeExp(event) {
@@ -102,7 +102,7 @@ function Exp(userDetails) {
       id: noteExp.id,
     };
     console.log(noteExp);
-    axios.post("http://localhost:8080/upexpense", e);
+    axios.post("https://trackersy-back.onrender.com/upexpense", e);
     window.location.reload();
   };
   function editFunc(event) {
@@ -129,7 +129,7 @@ function Exp(userDetails) {
     } else {
       const options = {
         method: "GET",
-        url: "http://localhost:8080/expensetable2",
+        url: "https://trackersy-back.onrender.com/expensetable2",
         params: { Username: user.user.email, Type: search1 },
       };
 
@@ -145,7 +145,7 @@ function Exp(userDetails) {
         });
       const options2 = {
         method: "GET",
-        url: "http://localhost:8080/api/expense2",
+        url: "https://trackersy-back.onrender.com/api/expense2",
         params: { Username: user.user.email, Type: search1 },
       };
 

@@ -8,14 +8,14 @@ import { SimpleGrid, Box, Stack, Button, Input } from "@chakra-ui/react";
 function Inv(userDetails) {
   const user = userDetails;
   React.useEffect(() => {
-    axios.post("http://localhost:8080/api/upload", "hello");
+    axios.post("https://trackersy-back.onrender.com/api/upload", "hello");
   }, [user.user.email]);
   //const [amt,setAmt]=React.useState(null);
   const [noteIns, setNoteIns] = React.useState(null);
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "http://localhost:8080/investtable",
+      url: "https://trackersy-back.onrender.com/investtable",
       params: { Username: user.user.email },
     };
 
@@ -35,7 +35,7 @@ function Inv(userDetails) {
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "http://localhost:8080/investOri",
+      url: "https://trackersy-back.onrender.com/investOri",
       params: { Username: user.user.email },
     };
 
@@ -54,7 +54,7 @@ function Inv(userDetails) {
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "http://localhost:8080/investCha",
+      url: "https://trackersy-back.onrender.com/investCha",
       params: { Username: user.user.email },
     };
 
@@ -97,7 +97,7 @@ function Inv(userDetails) {
     } else {
       const options = {
         method: "GET",
-        url: "http://localhost:8080/investtable2",
+        url: "https://trackersy-back.onrender.com/investtable2",
         params: { Username: user.user.email, Type: search1 },
       };
 
@@ -114,7 +114,7 @@ function Inv(userDetails) {
 
       const options2 = {
         method: "GET",
-        url: "http://localhost:8080/investOri2",
+        url: "https://trackersy-back.onrender.com/investOri2",
         params: { Username: user.user.email, Type: search1 },
       };
 
@@ -130,7 +130,7 @@ function Inv(userDetails) {
 
       const options3 = {
         method: "GET",
-        url: "http://localhost:8080/investCha2",
+        url: "https://trackersy-back.onrender.com/investCha2",
         params: { Username: user.user.email, Type: search1 },
       };
 

@@ -7,7 +7,7 @@ import { Button } from "@chakra-ui/react";
 // import { Wrap, WrapItem } from '@chakra-ui/react'
 function Navy(userDetails) {
   const logout = () => {
-    window.open(`http://localhost:8080/auth/logout`, "_self");
+    window.open(`https://trackersy-back.onrender.com/auth/logout`, "_self");
   };
   const [active, setActive] = useState("navBar");
   //function to toggle Navbar

@@ -18,7 +18,7 @@ function App() {
 
 	const getUser = async () => {
 		try {
-			const url = `http://localhost:8080/auth/login/success`;
+			const url = `https://trackersy-back.onrender.com/auth/login/success`;
 			const { data } = await axios.get(url, { withCredentials: true });
 			setUser(data.user._json);
 		} catch (err) {
