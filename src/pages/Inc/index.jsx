@@ -26,7 +26,7 @@ function Inc(userDetails) {
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "http://localhost:8080/incometable",
+      url: "https://trackersy-back.onrender.com/incometable",
       params: { Username: user.user.email },
     };
 
@@ -50,7 +50,7 @@ function Inc(userDetails) {
       const d = {
         _id: event.target.id,
       };
-      axios.post("http://localhost:8080/api/incdel", d);
+      axios.post("https://trackersy-back.onrender.com/api/incdel", d);
     }
     window.location.reload();
   }
@@ -86,7 +86,7 @@ function Inc(userDetails) {
       id: noteInc.id,
     };
     console.log(noteInc);
-    axios.post("http://localhost:8080/upincome", e);
+    axios.post("https://trackersy-back.onrender.com/upincome", e);
     window.location.reload();
   };
   function editFunc(event) {
@@ -108,7 +108,7 @@ function Inc(userDetails) {
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "http://localhost:8080/api/income",
+      url: "https://trackersy-back.onrender.com/api/income",
       params: { Username: user.user.email },
     };
 
@@ -134,7 +134,7 @@ function Inc(userDetails) {
     } else {
       const options = {
         method: "GET",
-        url: "http://localhost:8080/incometable2",
+        url: "https://trackersy-back.onrender.com/incometable2",
         params: { Username: user.user.email, Type: search1 },
       };
 
@@ -150,7 +150,7 @@ function Inc(userDetails) {
         });
       const options2 = {
         method: "GET",
-        url: "http://localhost:8080/api/income2",
+        url: "https://trackersy-back.onrender.com/api/income2",
         params: { Username: user.user.email, Type: search1 },
       };
 

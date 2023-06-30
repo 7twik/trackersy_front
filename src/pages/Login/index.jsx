@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import React from "react";
 function Login() {
   const googleAuth = () => {
-    window.open(`http://localhost:8080/auth/google/callback`, "_self");
+    window.open(`https://trackersy-back.onrender.com/auth/google/callback`, "_self");
   };
   return (
     <div className={styles.bgm}>
