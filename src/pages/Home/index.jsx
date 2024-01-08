@@ -202,7 +202,7 @@ function Home(userDetails) {
       url: "https://trackersy-back.onrender.com/investtable",
       params: { Username: user.user.email },
     };
-
+    //console.log(user.user.email  )
     axios
       .request(options)
       .then((response) => {
@@ -260,7 +260,7 @@ function Home(userDetails) {
       url: "https://trackersy-back.onrender.com/api/income",
       params: { Username: user.user.email },
     };
-
+    console.log(user.user.email  )
     axios
       .request(options)
       .then((response) => {
@@ -343,7 +343,7 @@ function Home(userDetails) {
       { name: "Investment valuation", value: amt4 },
     ]);
     //console.log(data01);
-    console.log(inc1);
+    //console.log(inc1);
   }, [amt1, amt2, amt3, amt4, data01]);
 
   ///////////////Graph code///////////////////////////////////////////////

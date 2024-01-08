@@ -1,10 +1,10 @@
 // import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 function Login() {
-  const googleAuth = () => {
-    window.open(`https://trackersy-back.onrender.com/auth/google/callback`, "_self");
-  };
+ 
+  const { loginWithRedirect } = useAuth0();
   return (
     <div className={styles.bgm}>
       <div className={styles.container}>
@@ -24,7 +24,7 @@ function Login() {
 					<input type="text" className={styles.input} placeholder="Password" /> */}
             {/* <button className={styles.btn}>Log In</button> */}
             <p className={styles.text}>Login with College mail id</p>
-            <button className={styles.google_btn} onClick={googleAuth}>
+            <button className={styles.google_btn} onClick={() => loginWithRedirect()}>
               <img src="./images/google.png" alt="google icon" />
               <span>Sign in with Google</span>
             </button>

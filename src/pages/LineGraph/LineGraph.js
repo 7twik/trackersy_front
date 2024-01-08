@@ -16,7 +16,7 @@ function Linechart(props)
     d3.slice(0,9);
     d4.slice(0,9);
     d5.slice(0,9);
-    console.log("LINE GRAPH"+d0);
+    //console.log("LINE GRAPH"+d0);
     const[product, setProduct]= useState( [
         {
             name:"Income",

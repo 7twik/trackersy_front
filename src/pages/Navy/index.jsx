@@ -5,10 +5,11 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { TbGridDots } from "react-icons/tb";
 import { Button } from "@chakra-ui/react";
 // import { Wrap, WrapItem } from '@chakra-ui/react'
+
+import { useAuth0 } from "@auth0/auth0-react";
 function Navy(userDetails) {
-  const logout = () => {
-    window.open(`https://trackersy-back.onrender.com/auth/logout`, "_self");
-  };
+
+  const { logout } = useAuth0();
   const [active, setActive] = useState("navBar");
   //function to toggle Navbar
   const showNav = () => {
@@ -56,7 +57,7 @@ function Navy(userDetails) {
               </a>
             </li>
             
-            <button className="btn lgot" onClick={logout} style={{color:"var(--whiteColor)",background:"var(--chakra-colors-teal-600)"}}>
+            <button className="btn lgot" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} style={{color:"var(--whiteColor)",background:"var(--chakra-colors-teal-600)"}}>
               Logout
             </button>
           </ul>

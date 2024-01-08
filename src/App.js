@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import React from "react";
 import Home from "./pages/Home";
 import BarChart from "./pages/Pier";
 //import Error from "./pages/Error";
@@ -11,25 +12,20 @@ import Inv from "./pages/Inv";
 import Stoc from "./pages/Stoc";
 import God from "./pages/RipOff";
 // import Stock from "./pages/Stock";
+import { useAuth0 } from "@auth0/auth0-react";
 import "./App.css";
 
 function App() {
-	const [user, setUser] = useState(null);
-
-	const getUser = async () => {
-		try {
-			const url = `https://trackersy-back.onrender.com/auth/login/success`;
-			const { data } = await axios.get(url, { withCredentials: true });
-			setUser(data.user._json);
-		} catch (err) {
-			console.log(err);
+	const { user, isAuthenticated, isLoading } = useAuth0();
+	React.useEffect(()=>{
+		if(user!=null){
+			localStorage.setItem('tok',user.email);
 		}
-	};
-
-	useEffect(() => {
-		getUser();
-	
-	}, [user]);
+		},[user])
+	  if (isLoading) {
+		localStorage.setItem('tok',null);
+		return <></>;
+	  }
 
 	return (
 		<div>
