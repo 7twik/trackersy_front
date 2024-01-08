@@ -8,14 +8,14 @@ import { SimpleGrid, Box, Stack, Button, Input } from "@chakra-ui/react";
 function Inv(userDetails) {
   const user = userDetails;
   React.useEffect(() => {
-    axios.post("https://trackersy-back.onrender.com/api/upload", "hello");
+    axios.post("https://trackersy-backend.onrender.com/api/upload", "hello");
   }, [user.user.email]);
   //const [amt,setAmt]=React.useState(null);
   const [noteIns, setNoteIns] = React.useState(null);
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "https://trackersy-back.onrender.com/investtable",
+      url: "https://trackersy-backend.onrender.com/investtable",
       params: { Username: user.user.email },
     };
 
@@ -35,7 +35,7 @@ function Inv(userDetails) {
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "https://trackersy-back.onrender.com/investOri",
+      url: "https://trackersy-backend.onrender.com/investOri",
       params: { Username: user.user.email },
     };
 
@@ -54,7 +54,7 @@ function Inv(userDetails) {
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "https://trackersy-back.onrender.com/investCha",
+      url: "https://trackersy-backend.onrender.com/investCha",
       params: { Username: user.user.email },
     };
 
@@ -97,7 +97,7 @@ function Inv(userDetails) {
     } else {
       const options = {
         method: "GET",
-        url: "https://trackersy-back.onrender.com/investtable2",
+        url: "https://trackersy-backend.onrender.com/investtable2",
         params: { Username: user.user.email, Type: search1 },
       };
 
@@ -114,7 +114,7 @@ function Inv(userDetails) {
 
       const options2 = {
         method: "GET",
-        url: "https://trackersy-back.onrender.com/investOri2",
+        url: "https://trackersy-backend.onrender.com/investOri2",
         params: { Username: user.user.email, Type: search1 },
       };
 
@@ -130,7 +130,7 @@ function Inv(userDetails) {
 
       const options3 = {
         method: "GET",
-        url: "https://trackersy-back.onrender.com/investCha2",
+        url: "https://trackersy-backend.onrender.com/investCha2",
         params: { Username: user.user.email, Type: search1 },
       };
 

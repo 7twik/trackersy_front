@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 function Signup() {
 	const googleAuth = () => {
 		window.open(
-			`https://trackersy-back.onrender.com/auth/google/callback`,
+			`https://trackersy-backend.onrender.com/auth/google/callback`,
 			"_self"
 		);
 	};

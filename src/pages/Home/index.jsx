@@ -60,7 +60,7 @@ function Home(userDetails) {
   }
   const submitNoteExp = async (event) => {
     console.log(noteExp);
-    axios.post("https://trackersy-back.onrender.com/expense", noteExp);
+    axios.post("https://trackersy-backend.onrender.com/expense", noteExp);
     window.location.reload();
   };
   ////////////////////////////////////////////////////////////////////////////////
@@ -91,7 +91,7 @@ function Home(userDetails) {
     // 	}
     // })
     console.log(noteInc);
-    axios.post("https://trackersy-back.onrender.com/income", noteInc);
+    axios.post("https://trackersy-backend.onrender.com/income", noteInc);
     window.location.reload();
   };
   /////////////////////////////////////////////////////////////////////////
@@ -118,7 +118,7 @@ function Home(userDetails) {
     });
   }
   const submitNoteInv = async (event) => {
-    axios.post("https://trackersy-back.onrender.com/invest", noteInv);
+    axios.post("https://trackersy-backend.onrender.com/invest", noteInv);
     console.log(noteInv);
     window.location.reload();
   };
@@ -129,7 +129,7 @@ function Home(userDetails) {
   const [noteNSE, setNoteNSE] = React.useState(0);
 
   React.useEffect(() => {
-    axios.get("https://trackersy-back.onrender.com/api/stockzz").then((res) => {
+    axios.get("https://trackersy-backend.onrender.com/api/stockzz").then((res) => {
       setNameNSE(res.data);
       console.log(res.data);
     });
@@ -140,7 +140,7 @@ function Home(userDetails) {
     console.log(val);
     const options = {
       method: "GET",
-      url: "https://trackersy-back.onrender.com/rtkQ",
+      url: "https://trackersy-backend.onrender.com/rtkQ",
       params: { Name: val },
     };
 
@@ -199,7 +199,7 @@ function Home(userDetails) {
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "https://trackersy-back.onrender.com/investtable",
+      url: "https://trackersy-backend.onrender.com/investtable",
       params: { Username: user.user.email },
     };
     //console.log(user.user.email  )
@@ -247,7 +247,7 @@ function Home(userDetails) {
   }, [noteInv.Name]);
 
   const submitNoteIns = async (event) => {
-    axios.post("https://trackersy-back.onrender.com/investSell", noteInsx);
+    axios.post("https://trackersy-backend.onrender.com/investSell", noteInsx);
     console.log(noteInsx);
     window.location.reload();
   };
@@ -257,7 +257,7 @@ function Home(userDetails) {
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "https://trackersy-back.onrender.com/api/income",
+      url: "https://trackersy-backend.onrender.com/api/income",
       params: { Username: user.user.email },
     };
     console.log(user.user.email  )
@@ -276,7 +276,7 @@ function Home(userDetails) {
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "https://trackersy-back.onrender.com/api/expense",
+      url: "https://trackersy-backend.onrender.com/api/expense",
       params: { Username: user.user.email },
     };
 
@@ -295,7 +295,7 @@ function Home(userDetails) {
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "https://trackersy-back.onrender.com/investOri",
+      url: "https://trackersy-backend.onrender.com/investOri",
       params: { Username: user.user.email },
     };
 
@@ -314,7 +314,7 @@ function Home(userDetails) {
   React.useEffect(() => {
     const options = {
       method: "GET",
-      url: "https://trackersy-back.onrender.com/investCha",
+      url: "https://trackersy-backend.onrender.com/investCha",
       params: { Username: user.user.email },
     };
 
@@ -357,7 +357,7 @@ function Home(userDetails) {
       const dd = new Date(ds.setDate(ds.getDate() - i));
       const options = {
         method: "GET",
-        url: "https://trackersy-back.onrender.com/api/income3",
+        url: "https://trackersy-backend.onrender.com/api/income3",
         params: { Username: user.user.email, Date: dd },
       };
 
@@ -395,7 +395,7 @@ function Home(userDetails) {
       const dd = new Date(ds.setDate(ds.getDate() - i));
       const options = {
         method: "GET",
-        url: "https://trackersy-back.onrender.com/api/expense3",
+        url: "https://trackersy-backend.onrender.com/api/expense3",
         params: { Username: user.user.email, Date: dd },
       };
 
@@ -435,7 +435,7 @@ function Home(userDetails) {
       const dd = new Date(ds.setDate(ds.getDate() - i));
       const options = {
         method: "GET",
-        url: "https://trackersy-back.onrender.com/investCha3",
+        url: "https://trackersy-backend.onrender.com/investCha3",
         params: { Username: user.user.email, Date: dd },
       };
 
@@ -475,7 +475,7 @@ function Home(userDetails) {
       const dd = new Date(ds.setDate(ds.getDate() - i));
       const options = {
         method: "GET",
-        url: "https://trackersy-back.onrender.com/investOri3",
+        url: "https://trackersy-backend.onrender.com/investOri3",
         params: { Username: user.user.email, Date: dd },
       };
 

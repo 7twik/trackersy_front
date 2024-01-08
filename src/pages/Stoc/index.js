@@ -18,7 +18,7 @@ const Stock = () => {
 		
         const options = await {
             method: 'GET',
-            url: 'https://trackersy-back.onrender.com/api/stock',
+            url: 'https://trackersy-backend.onrender.com/api/stock',
             params: {Name: event.target.value},
         }
 

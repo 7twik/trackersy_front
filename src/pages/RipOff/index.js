@@ -7,7 +7,7 @@ const God = () => {
     const [noteNSE,setNoteNSE]=React.useState([]);
 		
     React.useEffect(()=>{
-        axios.get("https://trackersy-back.onrender.com/api/stockzz").then(res =>{
+        axios.get("https://trackersy-backend.onrender.com/api/stockzz").then(res =>{
              setNameNSE(res.data);
              console.log(res.data+","+noteNSE);
         });
@@ -18,7 +18,7 @@ const God = () => {
         console.log(val);
         const options = {
             method: 'GET',
-            url: 'https://trackersy-back.onrender.com/rtkQ',
+            url: 'https://trackersy-backend.onrender.com/rtkQ',
             params: {Name: val},
         };
 
